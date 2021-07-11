@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.HMSRest.StaticConfig;
 import com.example.HMSRest.model.Medicine;
 import com.example.HMSRest.repositories.MedicineRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = StaticConfig.crossOrigin)
 public class MedicineController {
 	@Autowired
 	private MedicineRepository medicineRepo;

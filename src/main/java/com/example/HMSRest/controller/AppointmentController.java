@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.HMSRest.StaticConfig;
 import com.example.HMSRest.model.Appointment;
 import com.example.HMSRest.repositories.AppointmentRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = StaticConfig.crossOrigin)
 public class AppointmentController {
 	@Autowired
 	private AppointmentRepository appointmentRepo;

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.HMSRest.StaticConfig;
 import com.example.HMSRest.model.Appointment;
 import com.example.HMSRest.model.DoctorLoginTable;
 import com.example.HMSRest.model.Patient;
@@ -25,7 +26,7 @@ import com.example.HMSRest.repositories.PatientRepository;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = StaticConfig.crossOrigin)
 public class PatientController {
 
 	
@@ -53,13 +54,13 @@ public class PatientController {
 	public List<Appointment> getAppointmentByPatientId(@PathVariable String username, @PathVariable long id) {
 		return appointmentRepo.findAllByPatientId(id);
 	}
-	@GetMapping("/hms/{username}/patients/{id}/getfirstappointment")
-	public Optional<Appointment> getFirstAppointment(@PathVariable String username, @PathVariable long id) {
-		DoctorLoginTable d = doctorLoginRepo.findByUsername(username);
-//		Optional<Appointment> a = appointmentRepo.findPatientFirstAppointment((double)d.getNewCaseFees(),id);
-		Optional<Appointment> a = appointmentRepo.findTop1ByPatientIdAndCaseFeesOrderByTimestampDesc(id,(double)d.getNewCaseFees());
-		return a;
-	}
+//	@GetMapping("/hms/{username}/patients/{id}/getfirstappointment")
+//	public Optional<Appointment> getFirstAppointment(@PathVariable String username, @PathVariable long id) {
+//		DoctorLoginTable d = doctorLoginRepo.findByUsername(username);
+////		Optional<Appointment> a = appointmentRepo.findPatientFirstAppointment((double)d.getNewCaseFees(),id);
+//		Optional<Appointment> a = appointmentRepo.findTop1ByPatientIdAndCaseFeesOrderByTimestampDesc(id,(double)d.getNewCaseFees());
+//		return a;
+//	}
 	@PostMapping("/hms/{username}/patients/{id}/appointment")
 	public void postAppointmentByPatientId(@PathVariable String username, @PathVariable long id, @RequestBody Appointment a) {
 		appointmentRepo.save(a);
