@@ -1,5 +1,5 @@
 package com.example.HMSRest;
 
 public class StaticConfig {
-	public static final String crossOrigin = "http://react-hms-app.herokuapp.com";
+	public static final String crossOrigin = "https://react-hms-app.herokuapp.com";
 }
